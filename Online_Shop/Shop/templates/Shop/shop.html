@@ -1,19 +1,42 @@
-{% for product in products %}
-<div class ="card" style = "width:18rem";>
-  <img class="class-img-top" src="{{products.image}}" alt="W3Schools.com" >
-  <div class="card-body">
-    <h5 class="card-title">
-      "{{product.productname}}"
-    </h5>
-    <p class="card-text">
-      "{{product.description}}"
-    </p>
-    <p class="card-text">
-      Price = {{product.price}}
-    </p>
-    <a href="#" class="btn btn-primary">
-      Buy Now
-    </a>
+{% extends "shop/base.html" %}
+{% block content %}
+<header class="head">
+  <div class="nav1">
+    <a class="nav-item nav-link" href="#">Sign Up</a>
+    <a class="nav-item nav-link" href="#">Login</a>
   </div>
-</div>
-{% endfor %}
+</header>
+
+<style>
+  .nav1{
+    display: flexbox;
+    background: rgb(73, 207, 140);
+    text-align: right;
+  }
+</style>
+
+  {% for product in products %}
+  <style>
+    .card {
+      width:30rem;
+      height: 200px;
+      position: relative;
+      border: 3px solid rgb(146, 28, 53);
+      margin: 0;
+      top: 10%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-100%, 10%);
+    }
+    </style>
+  <div class ="card">
+    <img class="class-img-top" src="{{ products.image }}" alt="product-image" >
+    <div class="card-body">
+      <h5 class="card-title">"{{product.productname}}"</h5>
+      <p class="card-text">"{{product.description}}"</p>
+      <p class="card-text">Price = {{product.price}}</p>
+      <a href="#" class="btn btn-primary">Buy Now</a>
+    </div>
+  </div>
+  {% endfor %}
+{% endblock content %}
