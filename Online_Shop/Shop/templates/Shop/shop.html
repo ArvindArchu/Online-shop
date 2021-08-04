@@ -1,33 +1,63 @@
 {% extends "shop/base.html" %}
 {% block content %}
-<header class="head">
-  <div class="nav1">
-    <a class="nav-item nav-link" href="#">Sign Up</a> 
-    <a class="nav-item nav-link" href="#">Login</a>
-    <a class="nav-item nav-link" href="{% url 'shop-home' %} "style="text-align: right;">Home</a>
-  </div>
-</header>
+
+<div class=topnav>
+  <ul>
+    <li><a class="nav-item nav-link" href="#">Sign Up</a> </li>
+    <li><a class="nav-item nav-link" href="#">Login</a></li>
+    <li><a class="nav-item nav-link" href="{% url 'shop-home' %} ">Home</a></li>
+    <input type="text" placeholder="Search..">
+  </ul>
+  
+</div>
 
 <style>
-  .nav1{
-    display: flexbox;
-    background: rgb(73, 207, 140);
-    text-align: right;
-  }
+  ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 1;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover {
+  background-color: #111;
+}
+.topnav input[type=text] {
+  float: right;
+  align-self: auto;
+  background-color: rgb(80, 78, 78);
+  padding: 4px;
+  border: none;
+  margin-top: 5px;
+  margin-right: 16px;
+  font-size: 17px;
+}
 </style>
 
   {% for product in products %}
   <style>
     .card {
+      float: left;
       width:30rem;
-      height: 200px;
       position: relative;
-      border: 3px solid rgb(146, 28, 53);
-      margin: 0;
+      border: 3px solid rgb(24, 62, 187);
+      margin: 10px;
       top: 10%;
       left: 50%;
       -ms-transform: translate(-50%, -50%);
-      transform: translate(-100%, 10%);
+      transform: translate(-110%, 10%);
     }
     </style>
   <div class ="card">
