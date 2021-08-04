@@ -6,6 +6,7 @@
     <li><a class="nav-item nav-link" href="#">Sign Up</a> </li>
     <li><a class="nav-item nav-link" href="#">Login</a></li>
     <li><a class="nav-item nav-link" href="{% url 'shop-home' %} ">Home</a></li>
+    <li><a class="nav-item nav-link" href="{% url 'shop-about' %} ">About</a></li>
     <input type="text" placeholder="Search..">
   </ul>
   
@@ -61,7 +62,7 @@ li a:hover {
     }
     </style>
   <div class ="card">
-    <img class="class-img-top" src="{{ products.image }}" alt="product-image" >
+    <img src="{{ image.url }}">
     <div class="card-body">
       <h5 class="card-title">"{{product.productname}}"</h5>
       <p class="card-text">"{{product.description}}"</p>
