@@ -1,6 +1,63 @@
 {% extends "shop/base.html" %}
 {% block content %}
 
-<h1>ABout page</h1>
+<div class=topnav>
+    <ul>
+      <li><a class="nav-item nav-link" href="#">Sign Up</a> </li>
+      <li><a class="nav-item nav-link" href="#">Login</a></li>
+      <li><a class="nav-item nav-link" href="{% url 'shop-home' %} ">Home</a></li>
+      <li><a class="nav-item nav-link" href="{% url 'shop-about' %} ">About</a></li>
+      <input type="text" placeholder="Search..">
+    </ul>
+    
+  </div>
+  
+  <style>
+    ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 1;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  li a:hover {
+    background-color: #111;
+  }
+  .topnav input[type=text] {
+    float: right;
+    align-self: auto;
+    background-color: rgb(80, 78, 78);
+    padding: 4px;
+    border: none;
+    margin-top: 5px;
+    margin-right: 16px;
+    font-size: 17px;
+  }
+  </style>
+
+<title>About page</title>
+<h1>About page</h1>
+<p>This program's objective is to create a web application for school project
+    and this web application is based on online shop
+</p>
+<b>
+<p> by -
+<p> P ARVIND </p>
+<p> R NILESHWAR </p>
+<p> S SARAN KARTHIK </p>
+</b>
+
 
 {% endblock content %}
