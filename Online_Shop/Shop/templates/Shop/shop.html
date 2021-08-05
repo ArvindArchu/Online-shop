@@ -3,22 +3,41 @@
 
 <div class=topnav>
   <ul>
-    <li><a class="nav-item nav-link" href="#">Sign Up</a> </li>
-    <li><a class="nav-item nav-link" href="#">Login</a></li>
+    <li><a class="nav-item nav-link" href="{% url 'users:register' %}">Sign Up</a> </li>
+    <li><a class="nav-item nav-link" href="{% url 'users:login' %}">Login</a></li>
     <li><a class="nav-item nav-link" href="{% url 'shop-home' %} ">Home</a></li>
     <li><a class="nav-item nav-link" href="{% url 'shop-about' %} ">About</a></li>
     <input type="text" placeholder="Search..">
+    {% if user.is_authenticated %}
+      
+      <li class="nav-item" style="float: right;">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+      <li class="nav-item" style="float: right;">
+        <a class="nav-link" href="#">Welcome, {{user.username}}</a>
+      </li>
+
+    {% else %}
+
+      <li class="nav-item" style="float: right;">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+
+    {% endif %}
   </ul>
-  
 </div>
+
+
 
 <style>
   ul {
+  height: auto;
   list-style-type: none;
   margin: 0;
-  padding: 1;
+  padding: 1px;
   overflow: hidden;
   background-color: #333;
+  overflow: auto;
 }
 
 li {
@@ -36,6 +55,7 @@ li a:hover {
   background-color: #111;
 }
 .topnav input[type=text] {
+  
   float: right;
   align-self: auto;
   background-color: rgb(80, 78, 78);
@@ -47,18 +67,21 @@ li a:hover {
 }
 </style>
 
+
+
+
+
   {% for product in products %}
   <style>
     .card {
       float: left;
-      width:30rem;
+      height: auto;
+      width: 50rem;
       position: relative;
       border: 3px solid rgb(24, 62, 187);
       margin: 10px;
       top: 10%;
-      left: 50%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-110%, 10%);
+      left: 30%;
     }
     </style>
   <div class ="card">
