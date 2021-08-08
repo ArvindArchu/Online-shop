@@ -1,0 +1,12 @@
+{% extends 'Shop/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="container py-5"> 
+    <h1>Sell an item</h1>
+    <form action = "" method = "post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button class="btn btn-primary" type="submit" style="margin-top: 10px;">Confirm</button>
+    </form>
+</div>
+{% endblock content %}

@@ -1,90 +1,30 @@
 {% extends "shop/base.html" %}
 {% block content %}
-
-<div class=topnav>
-  <ul>
-    <li><a class="nav-item nav-link" href="{% url 'users:register' %}">Sign Up</a> </li>
-    <li><a class="nav-item nav-link" href="{% url 'users:login' %}">Login</a></li>
-    <li><a class="nav-item nav-link" href="{% url 'shop-home' %} ">Home</a></li>
-    <li><a class="nav-item nav-link" href="{% url 'shop-about' %} ">About</a></li>
-    <input type="text" placeholder="Search..">
-    {% if user.is_authenticated %}
-      
-      <li class="nav-item" style="float: right;">
-        <a class="nav-link" href="/logout">Logout</a>
-      </li>
-      <li class="nav-item" style="float: right;">
-        <a class="nav-link" href="#">Welcome, {{user.username}}</a>
-      </li>
-
-    {% else %}
-
-      <li class="nav-item" style="float: right;">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
-
-    {% endif %}
-  </ul>
-</div>
-
-
-
-<style>
-  ul {
-  height: auto;
-  list-style-type: none;
-  margin: 0;
-  padding: 1px;
-  overflow: hidden;
-  background-color: #333;
-  overflow: auto;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-li a:hover {
-  background-color: #111;
-}
-.topnav input[type=text] {
-  
-  float: right;
-  align-self: auto;
-  background-color: rgb(80, 78, 78);
-  padding: 4px;
-  border: none;
-  margin-top: 5px;
-  margin-right: 16px;
-  font-size: 17px;
-}
-</style>
-
-
-
-
-
   {% for product in products %}
   <style>
     .card {
       float: left;
       height: auto;
-      width: 50rem;
+      width: 30rem;
       border: 3px solid rgb(24, 62, 187);
       margin: 10px;
       top: 10%;
       left: 30%;
+      transform: translate(-200px,0px);
+    }
+    .img-disp{
+      float: left;
+    }
+    .card-body{
+      float: right;
+      padding: 20px;
     }
     </style>
+
   <div class ="card">
-    <img src="{{ image.url }}">
+    <div class="img-disp">
+    <img class = "product-img" src="{{ product.image.url }}" width="200" height="200">
+    </div>
     <div class="card-body">
       <h5 class="card-title">"{{product.productname}}"</h5>
       <p class="card-text">"{{product.description}}"</p>
