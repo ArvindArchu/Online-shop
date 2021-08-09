@@ -3,13 +3,14 @@
   {% for product in products %}
   <style>
     .card {
+      display: block;
       float: left;
       height: auto;
-      width: 30rem;
+      width: auto;
       border: 3px solid rgb(24, 62, 187);
       margin: 10px;
       top: 10%;
-      left: 30%;
+      left: 20%;
       transform: translate(-200px,0px);
     }
     .img-disp{
@@ -19,11 +20,15 @@
       float: right;
       padding: 20px;
     }
+    .product-img{
+      max-width: 400px;
+      max-height: 400px;
+    }
     </style>
 
   <div class ="card">
     <div class="img-disp">
-    <img class = "product-img" src="{{ product.image.url }}" width="200" height="200">
+    <img class = "product-img" src="{{ product.image.url }}"width="auto" height="auto" >
     </div>
     <div class="card-body">
       <h5 class="card-title">"{{product.productname}}"</h5>
