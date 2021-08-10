@@ -6,13 +6,16 @@ from .forms import *
 from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm 
 from django.contrib.auth import login, authenticate 
 
+#Home page view
 def home(request):
 	products = Product.objects.all()
 	return render(request, 'Shop/shop.html',{'products':products})
 
+#About page view
 def about(request):
 	return render(request, 'Shop/about.html')
 
+#Create-product view
 def product_create(request):
 	if request.method == 'POST':
 		form = productForm(request.POST, request.FILES)

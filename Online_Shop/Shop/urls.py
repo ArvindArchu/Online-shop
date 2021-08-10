@@ -6,9 +6,9 @@ from .views import *
 from django.contrib import admin
 
 
-
+#Projet urls
 urlpatterns = [
-    path('home/', views.home, name = 'shop-home'),#giving no path and then importing home from views
+    path('home/', views.home, name = 'shop-home'),
     path('about/',views.about,name = 'shop-about'),
     path('create/',views.product_create,name = 'shop-create'),
 ]
