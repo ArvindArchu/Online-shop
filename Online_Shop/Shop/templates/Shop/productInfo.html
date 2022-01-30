@@ -1,0 +1,65 @@
+{% extends "shop/base.html" %}
+{% block content %}
+    <style>
+        html{
+            background-color:  gray;
+        }
+        .card {
+            display: block;
+            float: left;
+            height: 90%;
+            width: 75%;
+            margin: 30px;
+            top: 10%;
+            left: 20%;
+            transform: translate(-200px,0px);
+        }
+        .card-body{
+            width: 50%;
+            height: 500px;
+            border-left: 10px solid red;
+            background-color: lightgrey;
+            overflow: hidden;
+            float: none;
+            padding: 3rem;
+        }
+        .img-disp{
+            width: 50%;
+            float: left;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin: 100px solid red;
+        }
+        .product-img{
+            height: 500px;
+            width: 500px;
+            object-fit: contain;
+        }
+        .card-title{
+            float: top;
+        }
+        .card-textd{
+            padding-top: 30px;
+            padding-bottom: auto;
+            text-align: justify;
+            overflow: hidden;
+        }
+        .card-price{
+            padding-top: 30px;
+        }
+        
+    </style>
+    <div class = "background">
+        <div class = "card">
+            <div class="img-disp">
+                <img class = "product-img" src="{{ product.image.url }}"width="auto" height="auto" >
+            </div>
+            <div class="card-body">
+                <h2 class="card-title">{{product.productname}}</h5>
+                <p class="card-textd">{{product.description}}</p>
+                <p class="card-price">{{product.price}}</p>
+                <a href= "#" class="btn btn-primary" >Buy Now</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

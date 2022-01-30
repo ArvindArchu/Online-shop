@@ -2,6 +2,7 @@ from django.db import models
 
 #Database for the products
 class Product(models.Model):
+    productID = models.AutoField(primary_key=True)
     productname = models.CharField(max_length=200,default='Enter product name')
     price = models.DecimalField(max_digits=5, decimal_places=2,default='0.0')
     description = models.TextField(default='Enter product description')

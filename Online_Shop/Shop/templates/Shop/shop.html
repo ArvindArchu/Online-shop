@@ -2,39 +2,53 @@
 {% block content %}
   {% for product in products %}
   <style>
+     html{
+       background-color: grey;
+     }
     .card {
       display: block;
-      float: left;
-      height: auto;
-      width: auto;
-      border: 3px solid rgb(24, 62, 187);
+      float: right;
+      height: 270px;
+      width: 450px;
+      border: 3px solid lightblue;
       margin: 10px;
       top: 10%;
-      left: 20%;
       transform: translate(-200px,0px);
     }
-    .img-disp{
-      float: left;
-    }
     .card-body{
+      height: 100%;
+      width: 40%;
+      background-color: lightgrey;
       float: right;
       padding: 20px;
     }
-    .product-img{
-      max-width: 400px;
-      max-height: 400px;
+    .img-disp{
+      height: 100%;
+      width: 60%;
+      float: left;
+      padding: 5px;
+      align-self: center;
     }
+    .product-img{
+      display: inline-block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 250px;
+      height: 250px;
+      object-fit: contain;
+    }
+    
     </style>
-
-  <div class ="card">
-    <div class="img-disp">
-    <img class = "product-img" src="{{ product.image.url }}"width="auto" height="auto" >
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">"{{product.productname}}"</h5>
-      <p class="card-text">"{{product.description}}"</p>
-      <p class="card-text">Price = {{product.price}}</p>
-      <a href="#" class="btn btn-primary">Buy Now</a>
+  <div class = "background">
+    <div class ="card">
+      <div class="img-disp">
+      <img class = "product-img" src="{{ product.image.url }}"max-width=500px max-height=500px >
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{product.productname}}</h5>
+        <p class="card-text">Price = {{product.price}}</p>
+        <a href= "{% url 'Shop:shop-productInfo' product.productID%}" class="btn btn-primary" >Buy Now</a>
+      </div>
     </div>
   </div>
   {% endfor %}

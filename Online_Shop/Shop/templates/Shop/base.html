@@ -15,9 +15,9 @@
     <div class=topnav>
       <ul>
     
-        <li><a class="nav-item nav-link" href="{% url 'shop-home' %} ">Home</a></li>
-        <li><a class="nav-item nav-link" href="{% url 'shop-about' %} ">About</a></li>
-        <li><a class="nav-item nav-link" href="{% url 'shop-create' %}">Sell an item</a> </li>
+        <li><a class="nav-item nav-link" href="{% url 'Shop:shop-home' %} ">Home</a></li>
+        <li><a class="nav-item nav-link" href="{% url 'Shop:shop-about' %} ">About</a></li>
+        <li><a class="nav-item nav-link" href="{% url 'Shop:shop-create' %}">Sell an item</a> </li>
         <input type="text" placeholder="Search..">
         {% if user.is_authenticated %}
           

@@ -28,3 +28,8 @@ def product_create(request):
 		form = productForm()
 
 	return render(request, 'Shop/createProduct.html', {'form': form})
+
+def product(request, myid):
+	product = Product.objects.get(productID = myid)
+	print(product.productID)
+	return render(request, 'Shop/productInfo.html', {'product':product})
