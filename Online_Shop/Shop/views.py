@@ -4,8 +4,9 @@ from django.shortcuts import redirect, render
 from.models import *
 from .forms import *
 from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm 
-from django.contrib.auth import login, authenticate 
-
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.contrib.auth import login, authenticate, logout
 #Home page view
 def home(request):
 	products = Product.objects.all()
@@ -17,19 +18,25 @@ def about(request):
 
 #Create-product view
 def product_create(request):
-	if request.method == 'POST':
-		form = productForm(request.POST, request.FILES)
-		if form.is_valid():
-			form.save()
-			# Get the current instance object to display in the template
-			img_obj = form.instance
-			return render(request, 'Shop/createProduct.html', {'form': form, 'img_obj': img_obj})
+	if request.user.is_authenticated:
+		if request.method == 'POST':
+			form = productForm(request.POST, request.FILES)
+			if form.is_valid():
+				prod = form.save(commit=False)
+				prod.author = request.user
+				prod.save()
+				# Get the current instance object to display in the template
+				img_obj = form.instance
+				return redirect("Shop:shop-home")
+				return render(request, 'Shop/createProduct.html', {'form': form, 'img_obj': img_obj})
+		else:
+			form = productForm()
 	else:
-		form = productForm()
+		messages.error(request, "You must be logged in to sell a product.")
+		return redirect("users:login")
 
 	return render(request, 'Shop/createProduct.html', {'form': form})
 
 def product(request, myid):
 	product = Product.objects.get(productID = myid)
-	print(product.productID)
 	return render(request, 'Shop/productInfo.html', {'product':product})

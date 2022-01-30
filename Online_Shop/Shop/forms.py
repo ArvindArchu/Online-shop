@@ -5,4 +5,5 @@ from .models import *
 class productForm(forms.ModelForm):
     class Meta:
         model = Product
+        exclude = ('author',)
         fields = ['productname','price','description','image']
