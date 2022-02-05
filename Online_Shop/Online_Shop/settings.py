@@ -79,8 +79,11 @@ WSGI_APPLICATION = 'Online_Shop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'shop_data',
+        'USER': 'djangouser',
+        'PASSWORD': 'djangopass',
+        'HOST': 'localhost',
     }
 }
 

@@ -13,12 +13,11 @@
   </head>
   <body>
     <div class=topnav>
-      <ul>
+      <ul class="topnav">
     
         <li><a class="nav-item nav-link" href="{% url 'Shop:shop-home' %} ">Home</a></li>
         <li><a class="nav-item nav-link" href="{% url 'Shop:shop-about' %} ">About</a></li>
         <li><a class="nav-item nav-link" href="{% url 'Shop:shop-create' %}">Sell an item</a> </li>
-        <input type="text" placeholder="Search..">
         {% if user.is_authenticated %}
           
           <li class="nav-item" style="float: right;">
@@ -51,13 +50,21 @@
     
     
     <style>
-      ul {
+    ul.topnav {
       height: auto;
       list-style-type: none;
       margin: 0;
       padding: 1px;
       overflow: hidden;
       background-color: #333;
+      overflow: auto;
+    }
+    ul {
+      height: auto;
+      list-style-type: none;
+      margin: 0;
+      padding: 1px;
+      overflow: hidden;
       overflow: auto;
     }
     
@@ -74,17 +81,6 @@
     }
     li a:hover {
       background-color: #111;
-    }
-    .topnav input[type=text] {
-      
-      float: right;
-      align-self: auto;
-      background-color: rgb(80, 78, 78);
-      padding: 4px;
-      border: none;
-      margin-top: 5px;
-      margin-right: 16px;
-      font-size: 17px;
     }
     </style>
     {% block content %}{% endblock %}

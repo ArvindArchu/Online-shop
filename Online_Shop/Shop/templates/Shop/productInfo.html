@@ -57,8 +57,23 @@
             <div class="card-body">
                 <h2 class="card-title">{{product.productname}}</h5>
                 <p class="card-textd">{{product.description}}</p>
+                <p class="card-stock">Remaining units: {{product.stock}}</p>
                 <p class="card-price">{{product.price}}</p>
-                <a href= "#" class="btn btn-primary" >Buy Now</a>
+                {% if product.stock > 0 %}
+                    {% if user.is_authenticated %}
+                        <a href= "{% url 'Shop:shop-checkout' product.productID%}" class="btn btn-primary" >Buy Now</a>
+                        {% if user == product.author %}
+                            <a href= "{% url 'Shop:shop-edit' product.productID %}" class="btn btn-primary" >Edit your product</a>
+                        {% endif %}
+                    {% else %}
+                        <a href= "{% url 'users:login' %}" class="btn btn-primary" >Login to buy</a>
+                    {% endif %}
+                {% else %}
+                    <h2>Product is out of stock</h2>
+                    {% if user == product.author %}
+                        <a href= "{% url 'Shop:shop-edit' product.productID%}" class="btn btn-primary" >Edit your product</a>
+                    {% endif %}
+                {% endif %}
             </div>
         </div>
     </div>
