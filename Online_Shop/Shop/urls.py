@@ -16,4 +16,5 @@ urlpatterns = [
     path('edit/<int:myid>/',views.product_edit,name = 'shop-edit'),
     path('product/<int:myid>/',views.product,name = 'shop-productInfo'),
     path('checkout/<int:myid>/',views.checkout,name = 'shop-checkout'),
+    path('deleteview/<int:myid>/',views.delete_view,name = 'delete-view'),
 ]

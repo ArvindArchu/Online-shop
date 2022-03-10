@@ -70,3 +70,8 @@ def product_edit(request, myid):
 def product(request, myid):
 	product = Product.objects.get(productID = myid)
 	return render(request, 'Shop/productInfo.html', {'product': product})
+
+def delete_view(request, myid):
+	del_prod = Product.objects.get(productID = myid)
+	del_prod.delete()
+	return redirect("Shop:shop-home")

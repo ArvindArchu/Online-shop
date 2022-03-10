@@ -6,7 +6,6 @@
         }
         .card {
             display: block;
-            float: left;
             height: 90%;
             width: 75%;
             margin: 30px;
@@ -15,6 +14,7 @@
             transform: translate(-200px,0px);
         }
         .card-body{
+            float: left;
             width: 50%;
             height: 500px;
             border-left: 10px solid red;
@@ -47,6 +47,9 @@
         .card-price{
             padding-top: 30px;
         }
+        .btn-primary{
+            padding: 10px;
+        }
         
     </style>
     <div class = "background">
@@ -63,18 +66,19 @@
                     {% if user.is_authenticated %}
                         <a href= "{% url 'Shop:shop-checkout' product.productID%}" class="btn btn-primary" >Buy Now</a>
                         {% if user == product.author %}
-                            <a href= "{% url 'Shop:shop-edit' product.productID %}" class="btn btn-primary" >Edit your product</a>
+                            <a href= "{% url 'Shop:shop-edit' product.productID%}" class="btn btn-primary" >Edit your product</a>
+                            <a href= "{% url 'Shop:delete-view' product.productID%}" class="btn btn-primary" >Delete your product</a>
                         {% endif %}
                     {% else %}
                         <a href= "{% url 'users:login' %}" class="btn btn-primary" >Login to buy</a>
                     {% endif %}
-                {% else %}
+                {% else %}    
                     <h2>Product is out of stock</h2>
-                    {% if user == product.author %}
-                        <a href= "{% url 'Shop:shop-edit' product.productID%}" class="btn btn-primary" >Edit your product</a>
-                    {% endif %}
+                        {% if user == product.author %}
+                            <a href= "{% url 'Shop:shop-edit' product.productID%}" class="btn btn-primary" >Edit your product</a>
+                            <a href= "{% url 'Shop:delete-view' product.productID%}" class="btn btn-primary" >Delete your product</a>
+                        {% endif %}
                 {% endif %}
-            </div>
         </div>
     </div>
 {% endblock content %}
